@@ -1,6 +1,8 @@
-import { DownloadIcon } from "@heroicons/react/solid";
-import { CollectionIcon } from "@heroicons/react/solid";
-import { LoginIcon } from "@heroicons/react/solid";
+import {
+  DownloadIcon,
+  LoginIcon,
+  CollectionIcon,
+} from "@heroicons/react/solid";
 
 export default function Dashboard() {
   return (
