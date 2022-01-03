@@ -125,7 +125,7 @@ export default function Dashboard() {
           />
         </div>
         <input
-          className="block pl-2 sm:text-sm rounded-sm p-2 border border-gray-500"
+          className="block pl-2 sm:text-sm rounded-sm p-2 border border-gray-500 w-44 sm:w-full sm:max-w-sm"
           placeholder="Search..."
         />
         <SortDescendingIcon className="h-7 w-7 text-gray-800 ml-4" />

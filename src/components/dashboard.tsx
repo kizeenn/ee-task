@@ -8,7 +8,6 @@ export default function Dashboard() {
   return (
     <header className="w-full py-6 px-6 lg:px-20 flex border-b-2 border-gray-300 items-center bg-gray-50">
       <p className="text-gray-900 font-bold">Dashboard</p>
-
       <div className="flex w-full justify-end">
         <DownloadIcon className="h-8 w-8 text-gray-700 mr-4 sm:mr-8" />
 
