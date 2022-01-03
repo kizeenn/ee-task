@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import Dashboard from "../components/dashboard";
 import Filters from "../components/filters";
 import Todos from "../components/todos";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 
 export type Todo = {
   userId: number;
@@ -12,7 +12,7 @@ export type Todo = {
   completed: boolean;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/todos");
   const todos: Todo[] = await response.json();
 
