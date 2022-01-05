@@ -3,6 +3,7 @@ import { EmojiHappyIcon, EmojiSadIcon } from "@heroicons/react/outline";
 import type { Filters } from "./dashboard";
 
 import useSWR from "swr";
+import Error from "./error";
 
 export type Todo = {
   userId: number;
@@ -24,8 +25,7 @@ export default function Todos({ filters }: { filters: Filters }) {
   });
 
   const { data, error } = useSWR<Todo[]>(url.toString(), fetcher);
-  if (error) return <div>Error</div>;
-  if (!data) return <div>Loading</div>;
+  if (error) return <Error />;
 
   return (
     <div className="w-full px-3 lg:px-20 items-center mt-10">
