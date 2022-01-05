@@ -16,6 +16,20 @@ const availableFilters = {
       uncompleted: "false",
     },
   },
+  userId: {
+    options: {
+      all: undefined,
+      "user 1": "1",
+      "user 2": "2",
+      "user 3": "3",
+      "user 4": "4",
+      "user 5": "5",
+      "user 6": "6",
+      "user 7": "7",
+      "user 8": "8",
+      "user 9": "9",
+    },
+  },
 };
 
 export default function Filters({
@@ -54,7 +68,7 @@ export default function Filters({
                           onFiltersChange({ ...filters });
                         }}
                         key={key}
-                        className="bg-white text-gray-800 text-sm sm:text-base"
+                        className="bg-gray-50 text-gray-800 text-sm sm:text-base"
                       >
                         {Object.entries(filter.options).map(([key, value]) => (
                           <option key={key} value={value}>
