@@ -28,6 +28,7 @@ const availableFilters = {
       "user 7": "7",
       "user 8": "8",
       "user 9": "9",
+      "user 10": "10",
     },
   },
 };
