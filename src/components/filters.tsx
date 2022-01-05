@@ -11,14 +11,14 @@ import type { Filters } from "./dashboard";
 const availableFilters = {
   completed: {
     options: {
-      all: undefined,
+      all: "",
       completed: "true",
       uncompleted: "false",
     },
   },
   userId: {
     options: {
-      all: undefined,
+      all: "",
       "user 1": "1",
       "user 2": "2",
       "user 3": "3",

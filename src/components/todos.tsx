@@ -21,7 +21,7 @@ export default function Todos({ filters }: { filters: Filters }) {
   const url = new URL("https://jsonplaceholder.typicode.com/todos");
 
   Object.entries(filters).forEach(([key, value]) => {
-    url.searchParams.set(key, value);
+    value ? url.searchParams.set(key, value) : null;
   });
 
   const { data, error } = useSWR<Todo[]>(url.toString(), fetcher);
