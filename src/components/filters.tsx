@@ -35,7 +35,7 @@ const options = [
   },
 ];
 
-export default function Dashboard() {
+export default function Filters() {
   return (
     <div className="w-full py-2 px-4 lg:px-20 flex items-center bg-gray-50 shadow-xl">
       <div className="flex w-full text-center gap-4">
