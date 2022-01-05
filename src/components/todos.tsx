@@ -1,11 +1,35 @@
 import { StarIcon } from "@heroicons/react/solid";
 import { EmojiHappyIcon, EmojiSadIcon } from "@heroicons/react/outline";
-import { Todo } from "../pages";
+import type { Filters } from "./dashboard";
 
-export default function Todos({ todos }: { todos: Todo[] }) {
+import useSWR from "swr";
+
+export type Todo = {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+};
+
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  return response.json();
+};
+
+export default function Todos({ filters }: { filters: Filters }) {
+  const url = new URL("https://jsonplaceholder.typicode.com/todos");
+
+  Object.entries(filters).forEach(([key, value]) => {
+    url.searchParams.set(key, value);
+  });
+
+  const { data, error } = useSWR<Todo[]>(url.toString(), fetcher);
+  if (error) return <div>Error</div>;
+  if (!data) return <div>Loading</div>;
+
   return (
     <div className="w-full px-3 lg:px-20 items-center mt-10">
-      {todos.map((todo) => (
+      {data.map((todo) => (
         <div
           key={todo.id}
           className="w-full shadow-xl bg-white p-3 xl:flex mt-5"
