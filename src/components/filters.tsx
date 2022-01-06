@@ -6,36 +6,40 @@ import {
   SortDescendingIcon,
 } from "@heroicons/react/outline";
 import { Fragment } from "react";
+import type { Filters } from "./dashboard";
 
-const options = [
-  {
-    first: "Last 7 days",
-    second: "Last 14 days",
-    third: "Last 31 days",
+const availableFilters = {
+  completed: {
+    options: {
+      all: "",
+      completed: "true",
+      uncompleted: "false",
+    },
   },
-  {
-    first: "Survey Type",
-    second: "Another Type",
-    third: "Another Type",
+  userId: {
+    options: {
+      all: "",
+      "user 1": "1",
+      "user 2": "2",
+      "user 3": "3",
+      "user 4": "4",
+      "user 5": "5",
+      "user 6": "6",
+      "user 7": "7",
+      "user 8": "8",
+      "user 9": "9",
+      "user 10": "10",
+    },
   },
-  {
-    first: "Touchpoint",
-    second: "Getpoint",
-    third: "Placepoint",
-  },
-  {
-    first: "Country",
-    second: "Poland",
-    third: "Spain",
-  },
-  {
-    first: "NPS",
-    second: "FPS",
-    third: "GPS",
-  },
-];
+};
 
-export default function Dashboard() {
+export default function Filters({
+  onFiltersChange,
+  filters,
+}: {
+  filters: Filters;
+  onFiltersChange: (filters: Filters) => void;
+}) {
   return (
     <div className="w-full py-2 px-4 lg:px-20 flex items-center bg-gray-50 shadow-xl">
       <div className="flex w-full text-center gap-4">
@@ -58,14 +62,20 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="hidden md:block md:pr-4 md:space-x-4">
-                    {options.map((option) => (
+                    {Object.entries(availableFilters).map(([key, filter]) => (
                       <select
-                        key={option.first}
-                        className="bg-gray-50 text-gray-800 focus:bg-gray-100 text-sm sm:text-base"
+                        onChange={(event) => {
+                          (filters as any)[key] = event.target.value;
+                          onFiltersChange({ ...filters });
+                        }}
+                        key={key}
+                        className="bg-gray-50 text-gray-800 text-sm sm:text-base"
                       >
-                        <option>{option.first}</option>
-                        <option>{option.second}</option>
-                        <option>{option.third}</option>
+                        {Object.entries(filter.options).map(([key, value]) => (
+                          <option key={key} value={value}>
+                            {key}
+                          </option>
+                        ))}
                       </select>
                     ))}
                   </div>
@@ -98,14 +108,22 @@ export default function Dashboard() {
                     </div>
 
                     <div className="px-2 pt-2 pb-3 sm:flex justify-center mx-auto gap-6">
-                      {options.map((option) => (
+                      {Object.entries(availableFilters).map(([key, filter]) => (
                         <select
-                          key={option.first}
+                          onChange={(event) => {
+                            (filters as any)[key] = event.target.value;
+                            onFiltersChange(filters);
+                          }}
+                          key={key}
                           className="bg-white text-gray-800 text-sm sm:text-base"
                         >
-                          <option>{option.first}</option>
-                          <option>{option.second}</option>
-                          <option>{option.third}</option>
+                          {Object.entries(filter.options).map(
+                            ([key, value]) => (
+                              <option key={key} value={value}>
+                                {key}
+                              </option>
+                            )
+                          )}
                         </select>
                       ))}
                     </div>
