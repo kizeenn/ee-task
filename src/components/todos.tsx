@@ -37,7 +37,9 @@ export default function Todos({ filters }: { filters: Filters }) {
         >
           <div className="flex justify-between items-center xl:border-r border-black xl:w-1/2 xl:px-5">
             <div className="flex items-center">
-              <StarIcon className="h-10 w-10 text-yellow-400" />
+              <div>
+                <StarIcon className="h-10 w-10 text-yellow-400" />
+              </div>
               <h1 className="font-bold text-sm xl:text-lg truncate w-32 sm:w-full xl:max-w-sm ml-5">
                 {todo.title}
               </h1>
